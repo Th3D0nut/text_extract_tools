@@ -14,9 +14,8 @@ class ExtractionTests(unittest.TestCase):
         extracted_data = extract(
             self.test_data_a,
             last_first_name=patterns["last_first_name"],
-        )
-        print(extracted_data)
-        self.assertTrue(bool(extracted_data))
+        )["last_first_name"]
+        self.assertEqual(extracted_data, names)
 
 
 if __name__ == "__main__":
