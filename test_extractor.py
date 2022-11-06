@@ -2,6 +2,13 @@ import unittest
 from extractor import extract, patterns
 
 
+names = [
+    ('van der Brug', 'Kim'), ('Es Ouasilla', 'Fatima'), ('Kakelstaart', 'Dom'),
+    ('Taartén', 'Ølaf'), ('es Doorda', 'Tequilla rocha Dos'),
+    ("ñan De Ñie Stàarten Stàat", "Ðenk")
+]
+
+
 class ExtractionTests(unittest.TestCase):
     def setUp(self):
         self.file = open(r"sample.txt", "r")

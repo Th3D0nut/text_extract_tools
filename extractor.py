@@ -4,7 +4,7 @@ from openpyxl import load_workbook
 
 
 patterns = {
-    "last_first_name": re.compile(r"(?P<last_name>[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+(?:\s?[A-Za-z\u00C0-\u00DD][a-z\u00E0-\u00FF]+)*), (?P<first_name>[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+(?:\s?[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+)*)"),
+    "last_first_name": re.compile(r"(?P<last_name>(?:\w\s?)*), (?P<first_name>[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+(?:\s?\w)*)(?:\s|\n|<)"),
     "email": re.compile(r"[0-9a-zA-Z.]+@[a-zA-Z.]+\.(?:nl|com|org)"),
     "username": re.compile(r"[a-z]+\d{3}"),
 }
