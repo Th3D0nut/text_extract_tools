@@ -3,23 +3,20 @@ import tkinter as tk
 from openpyxl import load_workbook
 
 
-def extract(text_box):
-    text = text_box.get("1.0", tk.END)
-    # define patterns
-    name_pattern = re.compile(r"(?P<last_name>[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+(?:\s?[A-Za-z\u00C0-\u00DD][a-z\u00E0-\u00FF]+)*), (?P<first_name>[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+(?:\s?[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+)*)")
-    mail_pattern = re.compile(r"[0-9a-zA-Z.]+@[a-zA-Z.]+\.(?:nl|com|org)")
-    username_pattern = re.compile(r"[a-z]+\d{3}")
-    # match in text
-    names = [
-        f"{name.group('first_name')} {name.group('last_name')}"
-        for name in name_pattern.finditer(text)
-    ]
-    emails = mail_pattern.findall(text)
-    usernames = username_pattern.findall(text)
-    return names, emails, usernames
+patterns = {
+    "last_first_name": re.compile(r"(?P<last_name>[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+(?:\s?[A-Za-z\u00C0-\u00DD][a-z\u00E0-\u00FF]+)*), (?P<first_name>[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+(?:\s?[A-Z\u00C0-\u00DD][a-z\u00E0-\u00FF]+)*)"),
+    "email": re.compile(r"[0-9a-zA-Z.]+@[a-zA-Z.]+\.(?:nl|com|org)"),
+    "username": re.compile(r"[a-z]+\d{3}"),
+}
 
 
-def write_to_bulkformulier(names, emails, usernames):
+def extract(text: str, **patterns) -> dict:
+    """Extract patterns from text."""
+    return {key: pattern.findall(text) for key, pattern in patterns.items()}
+
+
+def write_to_bulkformulier(names, emails, usernames) -> None:
+    """Writes data to new workbook using template_mutatie_medewerker.xlsx."""
     wb = load_workbook(filename='template_mutatie_medewerker.xlsx')
     sheet = wb.worksheets[0]
     for index, name in enumerate(names, 2):
@@ -29,9 +26,17 @@ def write_to_bulkformulier(names, emails, usernames):
     wb.save("test.xlsx")
 
 
-def extract_write(text_box):
-    names, emails, usernames = extract(text_box)
-    write_to_bulkformulier(names, emails, usernames)
+def extract_write(text: str) -> None:
+    """Wraps functions: extract and write_to_bulkformulier."""
+    extracted_data = extract(
+        text,
+        last_first_names=patterns["last_first_name"],
+        emails=patterns["email"],
+        usernames=patterns["username"]
+    )
+    full_names = [f"{first_name} {last_name}" for last_name, first_name in extracted_data["last_first_names"]]
+
+    write_to_bulkformulier(full_names, extracted_data["emails"], extracted_data["usernames"])
 
 
 def main():
@@ -40,7 +45,11 @@ def main():
     lbl_title.pack()
     txt_box = tk.Text()
     txt_box.pack()
-    btn_extract = tk.Button(text="Extract", command=lambda: extract_write(txt_box))
+
+    btn_extract = tk.Button(
+        text="Extract",
+        command=lambda: extract_write(txt_box.get("1.0", tk.END))
+    )
     btn_extract.pack()
     window.mainloop()
 
