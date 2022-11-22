@@ -83,14 +83,6 @@ def main():
     txt_box = tk.Text()
     txt_box.pack()
 
-    # Entry for name of file that holds reformatted extracted data
-    # TODO: make functional
-    lbl_filename = tk.Label(text="Name new xlsx file:")
-    lbl_filename.pack()
-    entry_filename = tk.Entry()
-    entry_filename.insert(0, "mutatie_medewerker")
-    entry_filename.pack()
-
     # Extract data button that starts extracting process
     btn_extract = tk.Button(
         text="Extract",
