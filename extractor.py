@@ -36,7 +36,7 @@ def write_to_gebruikersgegevens(names, usernames, passwords, emails):
     sheet = wb.worksheets[0]
     row_n = 1
     for i, name in enumerate(names):
-        sheet.cell(row_n := row_n + 1, 1).value = "DISPLAYNAAM: " + name[0] + " " + name[1]
+        sheet.cell(row_n := row_n + 1, 1).value = "DISPLAYNAAM: " + name[0] + ", " + name[1]
         sheet.cell(row_n := row_n + 1, 1).value = "ACCOUNTNAAM: " + usernames[i]
         sheet.cell(row_n, 4).value = "ADW Gebruikernaam"
         sheet.cell(row_n := row_n + 1, 1).value = "WACHTWOORD: " + passwords[i]
