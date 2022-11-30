@@ -19,7 +19,7 @@ Make sure you check the checkbox signifying to add Python to Path.
 - Download ZIP by pressing Code and selecting Download as ZIP
 - Unzip the file
 - Open your terminal (Powershell etc...)
-- Navigate to unzipped project folder. (cd [directoryname] or [full path], example: cd ~/Downloads/text_extract_tools)
+- Navigate to unzipped project folder. (`cd [directoryname] or [full path]`, example: `cd ~/Downloads/text_extract_tools`)
 - Run the following command: `python3 -m pip install -r requirements.txt`
 - Done
 
