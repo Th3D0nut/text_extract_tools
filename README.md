@@ -1,15 +1,29 @@
 # text_extract_tools
 A GUI to paste text in, which can extract certain patterns and put them in a template excel file.
 
-But very specific to certain texts at the moment.
-I wish to make it more general with options to choose which patterns are enabled and what the output will be.
-And also to save these as presets.
+Only works with very specific texts at the moment.
+See Sample.txt for a well example of this.
 
-How it works now:
-  Run extract.py
-  Paste text in the textbox (at the moment hardcoded: emails, specific usernames and specificly formatted full names.)
-  Press extract.
-  
-These steps load a template excel file.
-Extract data from text box.
-Write these to a new excel file based on the template.
+# Installing dependencies
+
+### Windows
+
+Press Win+R, type: "powershell" and press Enter
+In Powershell check if you have Python 3.10 installed. `python3 --version`
+If version is >= 3.10 continue. Otherwise install a version >= 3.10 from https://www.python.org/downloads/
+Make sure you check the checkbox signifying to add Python to Path.
+
+### OS Indifferent steps
+- Download ZIP by pressing Code and selecting Download as ZIP
+- Unzip the file
+- Open your terminal (Powershell etc...)
+- Navigate to unzipped project folder. (cd [directoryname] or [full path], example: cd ~/Downloads/text_extract_tools)
+- Run the following command: `python3 -m pip install -r requirements.txt`
+- Done
+
+# How to use
+- Open the extract.py file
+- For a demo paste sample.txt inside opened program
+- Press Extract
+- Inspect the two new excel sheets in the folder (Warning: Sheets will be overwritten if not renamed or moved to another folder)
+- Optional: If you don\'t want the terminal to pop up when opening the program then rename extract.py to extract.pyw
