@@ -8,9 +8,9 @@ See Sample.txt for an example of this.
 
 ### Windows
 
-Press Win+R, type: "powershell" and press Enter
+Press Win+R, type: "powershell" and press Enter.
 In Powershell check if you have Python 3.10 installed.
-`python3 --version`
+`python3 --version` (can also start with `py` instead of `python3`)
 If version is >= 3.10 continue at next paragraph.
 Otherwise install a python version >= 3.10 from https://www.python.org/downloads/
 Make sure you check the checkbox signifying to add Python to Path.
