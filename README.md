@@ -2,7 +2,7 @@
 A GUI to paste text in, which can extract certain patterns and put them in a template excel file.
 
 Only works with very specific texts at the moment.
-See Sample.txt for a well example of this.
+See Sample.txt for an example of this.
 
 # Installing dependencies
 
