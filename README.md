@@ -29,3 +29,8 @@ Make sure you check the checkbox signifying to add Python to Path.
 - Press Extract
 - Inspect the two new excel sheets in the folder (Warning: Sheets will be overwritten if not renamed or moved to another folder)
 - Optional: If you don\'t want the terminal to pop up when opening the program then rename extract.py to extract.pyw
+
+- If permissions are blocked on *windows* a workaround could be:
+- Open Powershell
+- Navigate to folder (use `cd [directory]` and `ls` commands)
+- Paste: `py extractor.py`, `python3 extract.py` or with a 'w' added to the extension.
