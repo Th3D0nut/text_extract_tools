@@ -33,4 +33,4 @@ Make sure you check the checkbox signifying to add Python to Path.
 - If permissions are blocked on *windows* a workaround could be:
 - Open Powershell
 - Navigate to folder (use `cd [directory]` and `ls` commands)
-- Paste: `py extractor.py`, `python3 extract.py` or with a 'w' added to the extension.
+- Run: `py extractor.py`, `python3 extract.py` or with a 'w' added to the extension.
